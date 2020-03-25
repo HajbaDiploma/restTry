@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <div>
+        <form method="post">
+            <input type="text" name="name" placeholder="Введите имя" />
+            <input type="text" name="sName" placeholder="Введите фамилию" />
+            <input type="text" name="fName" placeholder="Введите отчество" />
+            <input type="text" name="phone" placeholder="Введите номер телефона" />
+            <input type="text" name="skype" placeholder="Введите skype" />
+            <input type="text" name="socialNet" placeholder="Введите другие социальные сети" />
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div>Список сообщений</div>
+    {{#userList}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{name}}</span>
+        <i>{{sName}}</i>
+        <i>{{fName}}</i>
+    </div>
+    {{/userList}}
+</body>
+
+</html>
