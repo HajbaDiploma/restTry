@@ -1,4 +1,5 @@
 package com.hajba.restTry.model.users;
 
-public class Dev {
+public enum Role {
+    User;
 }

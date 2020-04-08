@@ -1,6 +1,6 @@
-package com.hajba.restTry.rest.controller;
+package com.hajba.restTry.rest.controller.users;
 
-import com.hajba.restTry.model.users.RegisterUser;
+import com.hajba.restTry.model.resume.RegisterUser;
 import com.hajba.restTry.repository.usersRepositiry.RegisterUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,11 +8,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Controller
 public class RegisterUserController {
+
+    Logger log = Logger.getLogger("Controller");
 
     @Autowired
     private RegisterUserRepo registerUserRepo;
@@ -56,18 +60,17 @@ public class RegisterUserController {
         return "user";
     }
 
-    @GetMapping
-    public String mainGet(Map<String, Object> model){
+    // Post mapping
+
+    @GetMapping("register/user")
+    public String getUser(Map<String, Object> model){
         Iterable<RegisterUser> iterable = registerUserRepo.findAll();
         model.put("name", iterable);
         return "main";
     }
 
-
-    // Post mapping
-
     @PostMapping("post/register/user")
-    public String createUser(
+    public RedirectView createUser(
             @RequestParam(name="name", required = true) String name,
             @RequestParam(name="sName", required = false) String sName,
             @RequestParam(name="fName", required = false) String fName,
@@ -97,9 +100,19 @@ public class RegisterUserController {
 
         registerUserRepo.save(registerUser);
 
-        Iterable<RegisterUser> iterable = registerUserRepo.findAll();
-        model.put("name", iterable);
-        return "main";
+        return new RedirectView("register/user");
+    }
+
+    @PostMapping("/filter/by-name")
+    public String filterByName(String name, Map <String, Object> model) {
+        Iterable<RegisterUser> iterable;
+        if (!StringUtils.isEmpty(name)) {
+            iterable = registerUserRepo.findByName(name);
+        } else {
+            iterable = registerUserRepo.findAll();
+        }
+        model.put("userList", iterable);
+        return "find-page";
     }
 
 }

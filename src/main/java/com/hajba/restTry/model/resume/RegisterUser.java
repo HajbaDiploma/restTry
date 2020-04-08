@@ -1,4 +1,4 @@
-package com.hajba.restTry.model.users;
+package com.hajba.restTry.model.resume;
 
 import javax.persistence.*;
 import java.io.Serializable;

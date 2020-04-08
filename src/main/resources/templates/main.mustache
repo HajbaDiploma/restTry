@@ -2,7 +2,14 @@
 
 <body>
     <div>
-        <form method="post">
+        <form action="/logout" method="post">
+            <label> <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label>
+            <input type="submit" value="Sign Out">
+        </form>
+    </div>
+    <div>
+        <form method="post" action="post/register/user">
+            <label> <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label>
             <input type="text" name="name" placeholder="Введите имя" />
             <input type="text" name="sName" placeholder="Введите фамилию" />
             <input type="text" name="fName" placeholder="Введите отчество" />
@@ -10,6 +17,13 @@
             <input type="text" name="skype" placeholder="Введите skype" />
             <input type="text" name="socialNet" placeholder="Введите другие социальные сети" />
             <button type="submit">Добавить</button>
+        </form>
+    </div>
+    <div>
+        <form method="post" action="/filter/by-name">
+            <label>  <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label>
+            <input type="text" name="name" placeholder="enter Name">
+            <button type="submit">find</button>
         </form>
     </div>
     <div>Список сообщений</div>
