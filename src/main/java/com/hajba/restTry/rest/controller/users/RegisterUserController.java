@@ -60,6 +60,11 @@ public class RegisterUserController {
         return "user";
     }
 
+    @GetMapping("/")
+    public String mainGet(){
+        return "main";
+    }
+
     // Post mapping
 
     @GetMapping("register/user")

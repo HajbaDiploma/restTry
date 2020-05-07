@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/home", "/registration", "/login").permitAll() // для главной страницы по url:/ доступен доступ всем пользователям системы
+                    .antMatchers("/", "/registration").permitAll() // для главной страницы по url:/ доступен доступ всем пользователям системы
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -38,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource) // чтобы менеджер (AuthenticationManagerBuilder) мог ходить в бд и доставать из нее типы юзеров и юзеров
         .passwordEncoder(NoOpPasswordEncoder.getInstance()) // шифрует пароли чтобы они не хранились в бд в явном виде
         .usersByUsernameQuery("select username, password, active from usr where username=?") // система находит пользователя по имени. поля именно в таком порядке
+                // select username, password, active from usr where username=?
         .authoritiesByUsernameQuery("select u.username, ur.roles from usr u inner join user_role ur on u.id = ur.user_id where u.username=?"); // помогает спрингу плучить имена пользователей с их ролями
+                //                   select u.username, ur.roles from usr u inner join user_role ur on u.id = ur.user_id where u.username=?
     }
 }
