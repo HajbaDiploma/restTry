@@ -45,7 +45,7 @@ public class RegistrationController {
             return new RedirectView("registration");
         }
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.User));
+        user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
         User fromdbUser = userRepo.findByUsername(user.getUsername());
         log.info(fromdbUser.toString());

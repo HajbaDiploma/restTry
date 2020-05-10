@@ -1,4 +1,4 @@
-package com.hajba.restTry.model.resume;
+package com.hajba.restTry.model.resume.lishnee;
 
 import javax.persistence.*;
 import java.io.Serializable;

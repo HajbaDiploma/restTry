@@ -1,6 +1,6 @@
 package com.hajba.restTry.repository.usersRepositiry;
 
-import com.hajba.restTry.model.resume.RegisterUser;
+import com.hajba.restTry.model.resume.lishnee.RegisterUser;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

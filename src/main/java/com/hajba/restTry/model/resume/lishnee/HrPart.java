@@ -1,4 +1,4 @@
-package com.hajba.restTry.model.resume;
+package com.hajba.restTry.model.resume.lishnee;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,19 +6,20 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "DevPart")
+@Table(name = "HrPart")
 @Setter
 @Getter
-public class DevPart {
+public class HrPart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column
-    private String javaCnowlage;
+    private String tellAboutYou;
     @Column
-    private String sqlCnowlage;
+    private String youDestenation;
     @Column
-    private String otherLanguage;
+    private String experience;
+
 }

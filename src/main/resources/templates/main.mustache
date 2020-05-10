@@ -20,6 +20,13 @@
         </form>
     </div>
     <div>
+        <form method="post" action="post/test">
+            <label> <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label>
+            <input type="text" name="name" placeholder="Введите имя add" />
+            <button type="submit">Добавить add</button>
+        </form>
+    </div>
+    <div>
         <form method="post" action="/filter/by-name">
             <label>  <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label>
             <input type="text" name="name" placeholder="enter Name">

@@ -2,17 +2,53 @@
 <html>
 <head>
     <title>Spring Security Example </title>
+
+    <style>
+        .headerstyle {
+            display: block;
+            background: #00b0d8;
+            /* Градиент */
+        }
+        .header-bg {
+            background: #04b7d8;
+            /* Животные */
+            height: 80px; /* Высота шапки */
+            text-align: center; /* Выравнивание по центру */
+        }
+        .headerhrefblock{
+            background: aquamarine;
+            margin-top: 10px;
+            margin-right: 20px;
+            width: 120px;
+            height: 60px;
+            display: inline-block;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 
-Login page
+<header class="headerstyle">
+    <div class="header-bg">
+            <div class="headerhrefblock">
+                <a href="/registration"><h2>register</h2></a>
+            </div>
+            <div class="headerhrefblock">
+                <a href="/login"><h2>login</h2></a>
+            </div>
+    </div>
+</header>
 
-<form action="login" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><label>  <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<a href="/registration">register on web site</a>
+Login page
+<div style="margin-left: 45%; margin-top: 10%">
+    <form action="login" method="post">
+        <div><label> User Name : <input type="text" name="username"/> </label></div>
+        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div><label>  <input type="hidden" name="_csrf" value="{{_csrf.token}}"/> </label></div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+    <a href="/registration">register on web site</a>
+</div>
+
 </body>
 </html>

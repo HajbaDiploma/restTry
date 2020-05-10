@@ -1,5 +1,12 @@
 package com.hajba.restTry.model.users;
 
-public enum Role {
-    User;
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Role implements GrantedAuthority {
+    USER;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

@@ -1,8 +1,10 @@
 package com.hajba.restTry.rest.controller.users;
 
-import com.hajba.restTry.model.resume.RegisterUser;
+import com.hajba.restTry.model.resume.lishnee.RegisterUser;
+import com.hajba.restTry.model.users.User;
 import com.hajba.restTry.repository.usersRepositiry.RegisterUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +64,7 @@ public class RegisterUserController {
 
     @GetMapping("/")
     public String mainGet(){
-        return "main";
+        return "registration";
     }
 
     // Post mapping
@@ -74,8 +76,22 @@ public class RegisterUserController {
         return "main";
     }
 
+    @PostMapping("post/test")
+    public String createTest(
+            @RequestParam(name="name", required = true) String name
+    ){
+        log.info("in method");
+        RegisterUser user = new RegisterUser();
+        user.setName(name);
+        log.info(user.toString());
+        registerUserRepo.save(user);
+        log.info("was saved");
+        return "main";
+    }
+
     @PostMapping("post/register/user")
     public RedirectView createUser(
+
             @RequestParam(name="name", required = true) String name,
             @RequestParam(name="sName", required = false) String sName,
             @RequestParam(name="fName", required = false) String fName,
